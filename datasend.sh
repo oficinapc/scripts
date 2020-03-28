@@ -16,12 +16,12 @@
 # Declarando variaveis
 getnum=`cat numatual.txt`  # pega numero da execucao anterior
 vlratual=$(($getnum+1)) # adiciona mais 1
-servidor_email='177.70.110.120'
+servidor_email='177.7.11.129'
 porta_servidor_email='587'
-remetente_email='admredes@sindipraticossp.com.br'
+remetente_email='admredes@dominio.com.br'
 corpo_email="Bom dia.\n\n\nHoje devera ser colocada a fita da semana [$vlratual]\nObs: Verificar se a unidade de fita esta solicitando a fita de limpeza.\n\n\n\nObrigado\nRodrigo Duarte."
 assunto_email='BACKUP - TROCAR FITA . . . '
-destinatario_email="suporte@santospilots.com.br"
+destinatario_email="suporte@dominio.com.br"
 
 enviaMail() {
 	sendEmail -s $servidor_email:$porta_servidor_email -f "$remetente_email" -t "$destinatario_email" -u "$assunto_email" -m "$corpo_email" -xu "$remetente_email" -xp 392rd594
@@ -36,4 +36,3 @@ if [[ $vlratual -gt "11" ]]; then
       enviaMail
 fi
 exit 0
-
