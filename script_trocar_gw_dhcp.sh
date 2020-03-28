@@ -27,12 +27,12 @@
 # Netwatch - usar no Down
 # /log error "NET Caiu . . ."
 # /ip dhcp-cl set add-def=no [find comment="NET"]  
-# /tool e-mail send to="incidentes@marintter.com.br" subject="O Link do LINK-NET Caiu - Abrir chamado" body="O Link NET-EMBRATEL Caiu... "
+# /tool e-mail send to="incidentes@dominio.com.br" subject="O Link do LINK-NET Caiu - Abrir chamado" body="O Link NET-EMBRATEL Caiu... "
 
 # Usar no UP
 # /log error "NET Voltou . . ."
 # /ip dhcp-cl set add-def=yes [find comment="NET"]  
-# /tool e-mail send to="incidentes@marintter.com.br" subject="O Link do LINK-NET Voltou - Encerrar chamado" body="O Link NET_EMBRATEL Voltou... "
+# /tool e-mail send to="incidentes@dominio.com.br" subject="O Link do LINK-NET Voltou - Encerrar chamado" body="O Link NET_EMBRATEL Voltou... "
 
 
 
