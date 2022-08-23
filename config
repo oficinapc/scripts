@@ -1,0 +1,39 @@
+Host fwoficina
+     Hostname 192.168.1.1
+     Port 53222
+     User maclink
+     IdentityFile ~/.ssh/id_rsa_maclink.ssh
+
+Host fwltcomex
+     Hostname litoralcomercio.dyndns.org
+     Port 53222
+     User maclink
+     IdentityFile ~/.ssh/id_rsa_maclink.ssh
+
+Host fwmarintter
+     Hostname marintter.dyndns.org
+     Port 53222
+     User maclink
+     IdentityFile ~/.ssh/id_rsa_maclink.ssh
+
+Host fwplco
+     Hostname pelecomercio.dyndns.org
+     Port 2222
+     User maclink
+     IdentityFile ~/.ssh/id_rsa_maclink.ssh
+
+Host fwinovar
+     Hostname inovar-cont.dyndns.org
+     Port 53222
+     User maclink
+
+Host fwmginvest
+     Hostname mginvestimentos.dyndns.org
+     Port 53222
+     User maclink
+
+Host fwramponi
+     Hostname ramponitransporte.dyndns.org
+     Port 53222
+     User maclink
+
