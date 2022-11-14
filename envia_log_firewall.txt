@@ -1,0 +1,19 @@
+# Script de LOGs
+# Author : Fernando Fortes 
+#
+/log print file=LOGMKT.txt
+:delay 2s
+# System empresa
+:global empresa "Doin Motors"
+# System modelo 
+:global modelo [/system routerboard get model]
+# System data 
+:global data [/system clock get date]
+# System hora 
+:global hora [/system clock get time]
+# System name
+:global sysname [/system identity get name]
+:log info message="envio de logs para analise"
+:delay 2s
+/tool e-mail send to="christian@doinmotors.com.br" cc="suporte@oficinapc.com.br" subject="Log's - $empresa : realizado em $data as $hora" file="LOGMKT.txt" body="Em anexo, segue parte do arquivo dee LOG's do Mikrotik RouterBoard [ $sysname ] - Firewall de Borda, cujo modelo é $modelo, realizado as $hora de $data da empresa $empresa."
+:log info message="email de log's enviado com sucesso..."
