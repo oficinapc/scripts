@@ -1,0 +1,11 @@
+# ------ Dados do Perfil ------
+:global     NomePerfil          "Vivo"
+:global     ComentarioPerfil    "Vivor Recursivo"
+
+# ------ Datos de la Ruta Recursiva ------
+:global     ComentarioRotas     "Rota Recursiva - Vivo"
+:global     IPMonitor           "200.219.148.10"
+:global     DistanciaRota       "1"
+
+/ppp profile add name=$NomePerfil comment=($ComentarioPerfil . " - " . $IPMonitor) on-down="/ip route remove [find comment=\"Nao Trocar | $ComentarioRotas\"]" on-up="/ip route add ds=$IPMonitor gateway=\$\"remote-address\" scope=10 comment=\"Nao Trocar | $ComentarioRotas\"\r\
+ \n /ip route add ds=0.0.0.0/0 check-gateway=ping gateway=$IPMonitor comment=\"Nao Trocar | $ComentarioRotas\" distance=$DistanciaRota"
