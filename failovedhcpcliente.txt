@@ -1,0 +1,29 @@
+# ------ Dados DHCP-Client ------
+:global     NomeInterface      "ether3"
+
+# ------ Dados Rota Recursiva ------
+:global     ComentarioRotas     "Rota Recursiva - Claro"
+:global     IPMonitor           "1.1.1.1"
+:global     DistanciaRota       "1"
+
+/ip dhcp-client
+add add-default-route=no dhcp-options=hostname,clientid disabled=no interface=$NomeInterface script="{\r\
+    \n    :local count [/ip route print count-only where (comment=\"Nao Trocar | $ComentarioRotas\" and dst-address!=0.0.0.0/0)]\r\
+    \n    :if (\$bound=1) do={\r\
+    \n        :if (\$count = 0) do={\r\
+    \n            /ip route add ds=$IPMonitor gateway=\$\"gateway-address\" comment=\"Nao Trocar | $ComentarioRotas\" scope=10\r\
+    \n            /ip route add ds=0.0.0.0/0 check-gateway=ping distance=$DistanciaRota gateway=$IPMonitor comment=\"Nao Trocar | $ComentarioRotas\" scope=10\r\
+    \n        } else={\r\
+    \n            :if (\$count > 2) do={\r\
+    \n                :local test [/ip route find where (comment=\"Nao Trocar | $ComentarioRotas\" and dst-address!=0.0.0.0/0)]\r\
+    \n                :if ([/ip route get \$test gateway] != \$\"gateway-address\") do={\r\
+    \n                    /ip route set \$test gateway=\$\"gateway-address\"\r\
+    \n                }\r\
+    \n            } else={\r\
+    \n                :error \"Ha varias rotas.\"\r\
+    \n            }\r\
+    \n        }\r\
+    \n    } else={\r\
+    \n        /ip route remove [find comment=\"Nao Trocar | $ComentarioRotas\"]\r\
+    \n    }\r\
+    \n}"
